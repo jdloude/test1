@@ -4,10 +4,9 @@ let userData = {};
 
 function getUserData() {
     $.get("/api/user").then(function(res) {
-        userData = res;
-        console.log("User Data: ", userData);
+        userData = res.currentUser;
         // change the name on the page to reflect user's name
-        // $(".studentName").text(`${userData.first_name} ${userData.last_name}`);
+        $(".studentName").text(`${userData.name}`);
     });
 }
 getUserData();
@@ -53,7 +52,6 @@ function createLessonRow(lessonData) {
 
 function getLessons() {
     $.get("/api/lessons").then(function(res) {
-        console.log(res);
         // get the current week
         let curr;
         let first;
@@ -67,7 +65,7 @@ function getLessons() {
 
         firstDay = new Date(curr.setDate(first));
         lastDay = new Date(curr.setDate(last));
-        console.log(firstDay + " firstday", lastDay + " lastday");
+        //console.log(firstDay + " firstday", lastDay + " lastday");
         // currentWeek(6);
 
         let lessonsWeekArr = [];
@@ -81,13 +79,13 @@ function getLessons() {
                 lessonsWeekArr.push(res[i]);
             }
         }
-        console.log(lessonsWeekArr, "here are lessons matching our dates");
+        //console.log(lessonsWeekArr, "here are lessons matching our dates");
 
         let rowsToAdd = [];
         for (var i = 0; i < lessonsWeekArr.length; i++) {
             rowsToAdd.push(createLessonRow(lessonsWeekArr[i]));
         }
-        console.log("Rows to add: ", rowsToAdd);
+        //console.log("Rows to add: ", rowsToAdd);
         sessionTable.append(rowsToAdd);
     });
 }
@@ -104,13 +102,13 @@ function attendView() {
 
 // function to handle click event for class attendance
 function regAttend() {
-    console.log("click event working");
+    //console.log("click event working");
     // need userID and lessonID to post into attendance table
     let attendData = {
         student_id: userData.id,
         lesson_id: this.id
     };
-    console.log("Attend data ", attendData);
+    //console.log("Attend data ", attendData);
     $.post("/api/attend", attendData).then(attendView);
 
     ///////////////// once attendance is registered, disable the click event
@@ -132,25 +130,16 @@ function createHomeworkRow(homeworkData) {
     <td id="hmwkForm${homeworkData.id}">
     <div class="row" >
   <form class="col s12">
-    <div class="row" >
       <div class="input-field col s6" >
       <div class="row"
         <div class="hey">Submit Homework and Comments</div>
+      </div>
+        <input id="hmwk${homeworkData.id}-url" type="text" class="validate" placeholder="Enter URL Here">
+        <button class="btn btn-sm submit-hmwk" type="button" id="${homeworkData.id}" >Submit</button>
         </div>
-        <input id="hmwk${homeworkData.id}-url1" type="text" class="validate">
-        <label for="hmwk${homeworkData.id}-url1" class="added">Add URLs</label>
-      </div>
-      <div class="input-field col s6">
-        <input id="hmwk${homeworkData.id}-url2" type="text" class="validate">
-        <label for="hmwk${
-        homeworkData.id
-        }-url2" class="opt">Add Another URL</label>
-        <button class="btn btn-sm submit-hmwk" type="button" id="${
-        homeworkData.id
-        }" >Submit</button>
-      </div>
     </div>
-      </td></tr>`;
+      </td></tr>
+      </form>`;
 
     return newTr;
 }
@@ -160,7 +149,7 @@ $("body").on("click", ".hmwkFormToggle", hwmkFormView);
 let showForm = true;
 
 function hwmkFormView() {
-    console.log("hmwkFORM click working");
+    //console.log("hmwkFORM click working");
     if (showForm === true) {
         $(`#hmwkForm-${this.id}`).hide();
         showForm = false;
@@ -172,7 +161,7 @@ function hwmkFormView() {
 
 function getHomework() {
     $.get("/api/homeworks").then(function(res) {
-        console.log(res);
+        //console.log(res);
         // get the current week
         let curr;
         let first;
@@ -186,7 +175,7 @@ function getHomework() {
 
         firstDay = new Date(curr.setDate(first));
         lastDay = new Date(curr.setDate(last));
-        console.log(firstDay + " firstday", lastDay + " lastday");
+        //console.log(firstDay + " firstday", lastDay + " lastday");
         // currentWeek(13);
 
         let hmwkWeekArr = [];
@@ -200,13 +189,13 @@ function getHomework() {
                 hmwkWeekArr.push(res[i]);
             }
         }
-        console.log(hmwkWeekArr, "here are homeworks matching our dates");
+        //console.log(hmwkWeekArr, "here are homeworks matching our dates");
 
         let rowsToAdd = [];
         for (var i = 0; i < hmwkWeekArr.length; i++) {
             rowsToAdd.push(createHomeworkRow(hmwkWeekArr[i]));
         }
-        console.log("Rows to add: ", rowsToAdd);
+        //console.log("Rows to add: ", rowsToAdd);
         hmwkTable.append(rowsToAdd);
     });
 }
@@ -218,25 +207,22 @@ $("body").on("click", ".submit-hmwk", submitHomework);
 function submitHomework() {
     event.preventDefault();
     console.log("submit hmwk click working");
-    alert("Homework submitted....we will grade it whenever we feel like it.");
-    // let hmwkLinksData = {
-    //     student_id: userData.id,
-    //     homework_id: this.id,
-    //     url1: $(`#hmwk${this.id}-url1`)
-    //         .val()
-    //         .trim(),
-    //     url2: $(`#hmwk${this.id}-url2`)
-    //         .val()
-    //         .trim()
-    // };
-    console.log("hmwk obj: ", hmwkLinksData);
-    //$
-    //$.post("/api/submitHMWK", hmwkLinksData).then(hmwkSubmitted);
-    // hmwkSubmitted();
+    let submit = {
+        student_id: userData.id,
+        homework_id: this.id,
+        url: $(`#hmwk${this.id}-url`)
+            .val()
+            .trim(),
+        // url2: $(`#hmwk${this.id}-url2`)
+        //     .val()
+        //     .trim()
+    };
+    //console.log("hmwk obj: ", submit);
+    $.post("/api/submitHMWK", submit).then(hmwkSubmitted);
+    hmwkSubmitted();
 }
 
-// function hmwkSubmitted() {
-//     //$(`#hmwk${this.id}-url1`).val("");
-//     //$(`#hmwk${this.id}-url2`).val("");
-//     alert("Homework submitted....we will grade it whenever we feel like it.");
-// }
+function hmwkSubmitted() {
+    $(`#hmwk${this.id}-url1`).val("");
+    alert("Homework submitted....we will grade it whenever we feel like it.");
+}

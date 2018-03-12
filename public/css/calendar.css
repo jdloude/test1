@@ -520,3 +520,8 @@ body {
 #cal #cal-frame table.temp {
     position: absolute;
 }
+
+#DU {
+    height: 82px;
+    width: 250px;
+}

@@ -1,13 +1,14 @@
 let userData = {};
+
 function getUserData() {
-    $.get("/api/user").then(function (res) {
-        userData = res;
+    $.get("/api/user").then(function(res) {
+        userData = res.currentUser;
         console.log("User Data: ", userData);
-        $(".studentName").text(`${userData.first_name} ${userData.last_name}`);
+        // change the name on the page to reflect user's name
+        $(".studentName").text(`${userData.name}`);
     });
 }
 getUserData();
-
 // vars homework container
 let hmwkTable = $("#table-homework");
 getHomework();
@@ -26,29 +27,18 @@ function createHomeworkRow(homeworkData) {
         }" style="float:right">description</i></a></td>
       </tr><tr>
       <td id="hmwkForm-icon${homeworkData.id}">
-      <div class="row" >
     <form class="col s12">
       <div class="row" >
         <div class="input-field col s6" >
-        <div class="row"
-          <div class="hey">Submit Homework and Comments</div>
-          </div>
-          <input id="hmwk${homeworkData.id}-url1" type="text" class="validate">
-          <label for="hmwk${
-        homeworkData.id
-        }-url1" class="added">Add URLs</label>
+            <div class="row"
+                <div class="hey">Submit Homework and Comments</div>
+            </div>
+            <input id="hmwk${homeworkData.id}-url" type="text" class="validate" placeholder="Enter URL Here">
         </div>
-        <div class="input-field col s6">
-          <input id="hmwk${homeworkData.id}-url2" type="text" class="validate">
-          <label for="hmwk${
-        homeworkData.id
-        }-url2" class="opt">Add Another URL</label>
-          <button class="btn btn-sm submit-hmwk" type="button" id="${
-        homeworkData.id
-        }" >Submit</button>
-        </div>
+        <button class="btn btn-sm submit-hmwk" type="button" id="${homeworkData.id}">Submit</button>
       </div>
-        </td></tr>`;
+        </td></tr>
+        </form>`;
 
     return newTr;
 }
@@ -56,6 +46,7 @@ function createHomeworkRow(homeworkData) {
 $("body").on("click", ".hmwkFormToggle", hwmkFormView);
 
 let showForm = true;
+
 function hwmkFormView() {
     console.log("hmwkFORM click working");
     if (showForm === true) {
@@ -68,7 +59,7 @@ function hwmkFormView() {
 }
 
 function getHomework() {
-    $.get("/api/homeworks").then(function (res) {
+    $.get("/api/homeworks").then(function(res) {
         console.log(res);
         // get the current week
         //   let curr;
@@ -115,18 +106,18 @@ $("body").on("click", ".submit-hmwk", submitHomework);
 function submitHomework() {
     event.preventDefault();
     console.log("submit hmwk click working");
-    let hmwkLinksData = {
+    let submit = {
         student_id: userData.id,
         homework_id: this.id,
-        url1: $(`#hmwk${this.id}-url1`)
-            .val()
-            .trim(),
-        url2: $(`#hmwk${this.id}-url2`)
+        url: $(`#hmwk${this.id}-url`)
             .val()
             .trim()
     };
-    console.log("hmwk obj: ", hmwkLinksData);
-    $.post("/api/submitHMWK", hmwkLinksData).then(hmwkSubmitted);
+    // url2: $(`#hmwk${this.id}-url2`)
+    //     .val()
+    //     .trim()
+    console.log("hmwk obj: ", submit);
+    $.post("/api/submitHMWK", submit).then(hmwkSubmitted);
 }
 
 function hmwkSubmitted() {

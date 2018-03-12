@@ -2,13 +2,11 @@ html,
 body {
     width: 100%;
     height: 100%;
-    /*background-color: #1e82b4;*/
     background: #000 url('https://images.unsplash.com/photo-1473984951266-787b955c9e0b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e4c636783309b345fc03ea43a17d5ceb&auto=format&fit=crop&w=1500&q=80') center center no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    /*  display:grid;*/
     position: relative;
     font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
 }
@@ -21,22 +19,13 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    /*  display:grid;*/
     position: relative;
 }
 
 .overlay-image {
     width: 100%;
     height: 100%;
-    /*  background: blue;*/
     opacity: .6;
-    /*  position: absolute;*/
-    /*background-color: 
--webkit-linear-gradient(to top, #1e82b4,#2b5876);  
-background:  
-linear-gradient(to top, #1e82b4, #2b5876); */
-    /*background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);*/
-    /* #4e4376,*/
     background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
 }
 
@@ -48,7 +37,6 @@ linear-gradient(to top, #1e82b4, #2b5876); */
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    /*  display:flex;*/
     position: relative;
 }
 
@@ -64,17 +52,10 @@ linear-gradient(to top, #1e82b4, #2b5876); */
 
 #sessionsBtn {
     background-color: #66bb6a;
-    /* background-color: #1e82b4;*/
-    /* margin-left: 500px;*/
-    /*  background-color: rgba(13,36,60,.8);*/
-    /* margin-left: 800px;*/
     float: right;
     margin-top: -9px;
     width: 190px;
 }
-
-
-/* -- import Roboto Font ---------------------------- */
 
 @import "https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic";
 
@@ -86,7 +67,6 @@ linear-gradient(to top, #1e82b4, #2b5876); */
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    /*border-bottom: 1px solid #e0e0e0;*/
 }
 
 
@@ -128,12 +108,9 @@ linear-gradient(to top, #1e82b4, #2b5876); */
     max-width: 100%;
     margin-bottom: 4rem;
     margin-left: 0%;
-    /*  position: absolute;*/
     min-height: 100%;
     height: 100%;
-    /*  position: relative;*/
     overflow-x: hidden;
-    /*  margin: 16px;*/
     padding: 0;
     min-height: 100%;
     font-size: 62.5%;
@@ -348,9 +325,7 @@ zebra-stripe styles (alternating gray and transparent backgrounds) .table-stripe
     -webkit-linear-gradient(to top,
     #4e4376,
     #2b5876);
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #4e4376, #2b5876);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 
@@ -361,13 +336,9 @@ zebra-stripe styles (alternating gray and transparent backgrounds) .table-stripe
     max-width: 100%;
     margin-bottom: 4rem;
     margin-left: 0%;
-    /*
-  position: relative;*/
     min-height: 100%;
     height: 100%;
-    /*position:relative;*/
     overflow-x: hidden;
-    /*  margin: 16px;*/
     padding-top: 0;
     min-height: 100%;
     font-size: 62.5%;
@@ -585,21 +556,12 @@ a:active {
 
 #homeworkBtn {
     background-color: #66bb6a;
-    /*    background-color: rgba(13,36,60,.8);*/
     margin-left: 800px;
     margin-top: -40px;
     float: right;
     margin-top: -49px;
     width: 190px;
 }
-
-
-/*
-html, body {
-  font-family: 'Roboto', 'Helvetica', sans-serif;
-  height: 100%;
-  width: 100%;
-}*/
 
 .avatar {
     width: 70px;
@@ -614,7 +576,6 @@ html, body {
 
 .mdl-layout__drawer .avatar {
     margin-bottom: 16px;
-    /*  margin-left: 74px;*/
 }
 
 .mdl-layout__drawer {
@@ -718,7 +679,6 @@ html, body {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    /* color: rgba(255, 255, 255, 0.56);*/
     color: #ffffff !important;
     font-weight: 500;
 }
@@ -731,7 +691,6 @@ html, body {
 .navigation .mdl-navigation__link .material-icons {
     font-size: 24px;
     color: #ffffff;
-    /*  color: rgba(255, 255, 255, 0.56);*/
     margin-right: 32px;
 }
 
@@ -787,9 +746,6 @@ _:-ms-input-placeholder,
  :root .graph {
     max-height: 300px;
 }
-
-
-/* TODO end */
 
 .graph:nth-child(1) {
     color: #00b9d8;
@@ -872,4 +828,9 @@ _:-ms-input-placeholder,
 #checkIn {
     font-size: 40px;
     color: #ef6c00;
+}
+
+#DU {
+    height: 82px;
+    width: 250px;
 }

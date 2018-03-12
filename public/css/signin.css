@@ -6,13 +6,11 @@ html,
 body {
     width: 100%;
     height: 100%;
-    /*background-color: #1e82b4;*/
     background: #000 url('https://images.unsplash.com/photo-1473984951266-787b955c9e0b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e4c636783309b345fc03ea43a17d5ceb&auto=format&fit=crop&w=1500&q=80') center center no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    /*  display:grid;*/
     position: relative;
 }
 
@@ -24,22 +22,13 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    /*  display:grid;*/
     position: relative;
 }
 
 .overlay-image {
     width: 100%;
     height: 100%;
-    /*  background: blue;*/
     opacity: .6;
-    /*  position: absolute;*/
-    /*background-color: 
--webkit-linear-gradient(to top, #1e82b4,#2b5876);  
-background:  
-linear-gradient(to top, #1e82b4, #2b5876); */
-    /*background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);*/
-    /* #4e4376,*/
     background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
 }
 
@@ -51,7 +40,6 @@ linear-gradient(to top, #1e82b4, #2b5876); */
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    /*  display:flex;*/
     position: relative;
 }
 
@@ -80,7 +68,6 @@ linear-gradient(to top, #1e82b4, #2b5876); */
 
 .form-elegant .font-small {
     font-size: 0.8rem;
-    /* width: inherit;*/
 }
 
 .form-elegant .z-depth-1a {
@@ -125,7 +112,6 @@ linear-gradient(to top, #1e82b4, #2b5876); */
 
 .form-elegant .font-small {
     font-size: 0.8rem;
-    /* width: inherit;*/
 }
 
 .form-elegant .z-depth-1a {
@@ -168,7 +154,6 @@ linear-gradient(to top, #1e82b4, #2b5876); */
 
 #drawer {
     background-color: #355c7d;
-    /*  background-color: rgba(13,36,60,.8);*/
     color: #ffffff;
     border-bottom: 1px solid #757575;
 }
@@ -186,58 +171,11 @@ linear-gradient(to top, #1e82b4, #2b5876); */
 }
 
 
-/*.cell{
-  border-style: solid;
-  border-color: #000000;
-}
-article {
-  position: relative;
-  top: 50%;
-  text-align: center;
-  transform: translate(0, -50%);
-  padding: 1rem;
-}
-h1 {
-  font-size: 1.75rem;
-  margin: 0 0 0.75rem 0;
-}*/
-
-
-/* Pattern styles */
-
-
-/*.container {
-  display: grid;
-  border: 1px solid black;
-}
-*/
-
-
-/*.container1{
-   display: grid;
-  border: 1px solid black;
-}
-.w-auto {
-    width: auto;
-}
-th.classTable{
-  font-family: "Roboto","Helvetica","Arial",sans-serif;
-  font-size: 20px;
-}
-table th{
-  font-size: 15px;
-}
-.tableBody{
-  font-size: 20px;
-}*/
-
-
 /*//===============================================//
            table for sessions and homework
 //===============================================//*/
 
 #checkIn {
-    /* margin-left: 400px;*/
     font-size: 40px;
 }
 
@@ -307,9 +245,7 @@ table th{
     /*  position: absolute;*/
     min-height: 100%;
     height: 100%;
-    /*  position: relative;*/
     overflow-x: hidden;
-    /*  margin: 16px;*/
     padding: 0;
     min-height: 100%;
     font-size: 62.5%;
@@ -538,20 +474,14 @@ zebra-stripe styles (alternating gray and transparent backgrounds) .table-stripe
     max-width: 100%;
     margin-bottom: 4rem;
     margin-left: 0%;
-    /*
-  position: relative;*/
     min-height: 100%;
     height: 100%;
-    /*position:relative;*/
     overflow-x: hidden;
-    /*  margin: 16px;*/
     padding-top: 0;
     min-height: 100%;
-    /*  font-size: 62.5%; */
     font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
     font-style: normal;
     font-weight: 300;
-    /*  font-size: 1.4rem;*/
     line-height: 2rem;
     letter-spacing: 0.01rem;
     color: #212121;
@@ -758,13 +688,9 @@ zebra-stripe styles (alternating gray and transparent backgrounds) .table-stripe
 
 #sessionsBtn {
     background-color: #66bb6a;
-    /* margin-left: 500px;*/
-    /*  background-color: rgba(13,36,60,.8);*/
-    /* margin-left: 800px;*/
     float: right;
     margin-top: -49px;
     width: 190px;
-    /*  margin-right: 100px;*/
 }
 
 a:active {
@@ -773,21 +699,12 @@ a:active {
 
 #homeworkBtn {
     background-color: #66bb6a;
-    /*    background-color: rgba(13,36,60,.8);*/
     margin-left: 800px;
     margin-top: -40px;
     float: right;
     margin-top: -49px;
     width: 190px;
 }
-
-
-/*
-html, body {
-  font-family: 'Roboto', 'Helvetica', sans-serif;
-  height: 100%;
-  width: 100%;
-}*/
 
 .avatar {
     width: 70px;
@@ -887,7 +804,6 @@ html, body {
 
 .mdl-navigation {
     background: #355c7d;
-    /* fallback for old browsers */
 }
 
 .drawer-header {
@@ -906,7 +822,6 @@ html, body {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    /* color: rgba(255, 255, 255, 0.56);*/
     color: #ffffff !important;
     font-weight: 500;
 }
@@ -919,7 +834,6 @@ html, body {
 .navigation .mdl-navigation__link .material-icons {
     font-size: 24px;
     color: #ffffff;
-    /*  color: rgba(255, 255, 255, 0.56);*/
     margin-right: 32px;
 }
 
@@ -975,9 +889,6 @@ _:-ms-input-placeholder,
  :root .graph {
     max-height: 300px;
 }
-
-
-/* TODO end */
 
 .graph:nth-child(1) {
     color: #00b9d8;
@@ -1057,12 +968,7 @@ _:-ms-input-placeholder,
     align-items: center;
 }
 
-
-/*.mdl-layout__content{
-  margin-left: 260px;
-  width: 80%;
-  height:40%;
-  padding-left:20px;
-  margin-top: 80px;
-  display: flex;
-}*/
+#DU {
+    height: 82px;
+    width: 250px;
+}

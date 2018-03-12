@@ -12,11 +12,11 @@ module.exports = function(app) {
     app.get("/", function(req, res) {
         if (req.session.Student.loggedIn === true) {
             res.sendFile(path.join(__dirname, "../public/landing.html"));
-            console.log(req.session.Student);
+            //console.log(req.session.Student);
         } else {
             res.sendFile(path.join(__dirname, "../public/index.html"));
             dao.allStudent(function(data) {
-                console.log(data);
+                //console.log(data);
             });
         }
     });
@@ -27,7 +27,7 @@ module.exports = function(app) {
         } else {
             res.sendFile(path.join(__dirname, "../public/index.html"));
             dao.allStudent(function(data) {
-                console.log(data);
+                //console.log(data);
             });
         }
     });
@@ -38,7 +38,7 @@ module.exports = function(app) {
         } else {
             res.sendFile(path.join(__dirname, "../public/index.html"));
             dao.allStudent(function(data) {
-                console.log(data);
+                //console.log(data);
             });
         }
     });
@@ -49,7 +49,7 @@ module.exports = function(app) {
         } else {
             res.sendFile(path.join(__dirname, "../public/index.html"));
             dao.allStudent(function(data) {
-                console.log(data);
+                //console.log(data);
             });
         }
     });
@@ -60,7 +60,7 @@ module.exports = function(app) {
         } else {
             res.sendFile(path.join(__dirname, "../public/index.html"));
             dao.allStudent(function(data) {
-                console.log(data);
+                //console.log(data);
             });
         }
     });
@@ -68,11 +68,11 @@ module.exports = function(app) {
     app.get("/landing", function(req, res) {
         if (req.session.Student.loggedIn === true) {
             res.sendFile(path.join(__dirname, "../public/landing.html"));
-            console.log(req.session.Student);
+            //console.log(req.session.Student);
         } else {
             res.sendFile(path.join(__dirname, "../public/index.html"));
             dao.allStudent(function(data) {
-                console.log(data);
+                //console.log(data);
             });
         }
     });
@@ -83,31 +83,19 @@ module.exports = function(app) {
         } else {
             res.sendFile(path.join(__dirname, "../public/index.html"));
             dao.allStudent(function(data) {
-                console.log(data);
+                // console.log(data);
             });
         }
     });
 
     //==================================API Routes===============================================
-    app.get("/api/lessons", function(req, res) {
-        dao.allLesson(function(data) {
-            console.log(data);
-            res.json(data);
-        });
-    });
-    app.get("/api/homeworks", function(req, res) {
-        dao.allHW(function(data) {
-            console.log(data);
-            res.json(data);
-        });
-    });
 
     //login endpoint
     app.post("/api/login", function(req, res) {
         //will show our user data from front end
-        console.log("this is the response", req.body);
+        //console.log("this is the response", req.body);
         //will see the currently formatted session object with user data
-        console.log(req.session);
+        //console.log(req.session);
         //initalizing user data variable to an empty object. this will hold our user data on this endpoint
         var student = {};
 
@@ -123,9 +111,9 @@ module.exports = function(app) {
                 //AKA: our users password coming in from the front end. the second parameter bcrypt wants us to pass in the hashed password that we stored in the db. lastly it wants a callback funtion
                 //bcrypt will hash the pasword coming in from the front end and compaire it to the users hashed password from our database it will give us a boolean value to let us know if the passwords were the same
                 bcrypt.compare(req.body.password, data[0].password, function(err, bcryptRes) {
-                    console.log("user defined password:", req.body.password);
-                    console.log("database Password:", data[0].password);
-                    console.log(bcryptRes);
+                    //console.log("user defined password:", req.body.password);
+                    //console.log("database Password:", data[0].password);
+                    //console.log(bcryptRes);
 
                     //     //if the response is false send an error to the front end letting the user know that the passwords did not match.
                     if (bcryptRes !== true) {
@@ -172,8 +160,39 @@ module.exports = function(app) {
             });
         });
     });
+
     app.get("/api/user", function(req, res) {
         res.json(req.session.Student);
+    });
+
+    app.get("/api/lessons", function(req, res) {
+        dao.allLesson(function(data) {
+            //console.log(data);
+            res.json(data);
+        });
+    });
+
+    app.get("/api/homeworks", function(req, res) {
+        dao.allHW(function(data) {
+            //console.log(data);
+            res.json(data);
+        });
+    });
+    app.post("/api/attend", function(req, res) {
+        dao.present(req.body.student_id, req.body.lesson_id,
+            function(result) {
+                // Send back the ID of the new quote
+                res.json({ id: result.insertId });
+            }
+        );
+    });
+    app.post("/api/submitHMWK", function(req, res) {
+        let submit = req.body
+            //console.log(req.body.student_id);
+        dao.turnIn(submit, function(result) {
+            // Send back the ID of the new quote
+            res.json({ id: result.insertId });
+        });
     });
     //=============================Last HTML Route========================================
     // If no matching route is found default to home
@@ -183,7 +202,7 @@ module.exports = function(app) {
         } else {
             res.sendFile(path.join(__dirname, "../public/index.html"));
             dao.allStudent(function(data) {
-                console.log(data);
+                //console.log(data);
             });
         }
     });

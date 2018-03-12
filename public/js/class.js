@@ -1,10 +1,12 @@
 //////////////////////need to grab the user data
 let userData = {};
+
 function getUserData() {
-    $.get("/api/user").then(function (res) {
-        userData = res;
+    $.get("/api/user").then(function(res) {
+        userData = res.currentUser;
         console.log("User Data: ", userData);
-        $(".studentName").text(`${userData.first_name} ${userData.last_name}`);
+        // change the name on the page to reflect user's name
+        $(".studentName").text(`${userData.name}`);
     });
 }
 getUserData();
@@ -47,7 +49,7 @@ function createLessonRow(lessonData) {
 }
 
 function getLessons() {
-    $.get("/api/lessons").then(function (res) {
+    $.get("/api/lessons").then(function(res) {
         console.log(res);
         // // get the current week
         // let curr;
